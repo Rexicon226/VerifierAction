@@ -4,7 +4,7 @@ icon: check-square
 color: purple
 run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 
-description: The "KSP2 Space Warp Verifier" GitHub Action is designed to streamline the verification process for your Kerbal Space Program 2 mods.
+description: The "KSP2 Space Warp Verifier" GitHub Action is designed to streamline the verification process for your KSP 2 mods.
 
 on:
   push:

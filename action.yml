@@ -2,14 +2,8 @@ name: Verify KSP2 Mod
 description: 'Streamline the verification process for your KSP 2 mods.'
 author: 'Sinon'
 
-on:
-  push:
-
-jobs:
-  version_check:
-    runs-on: ubuntu-latest
-
-    steps:
+runs: 
+  steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
@@ -18,3 +12,23 @@ jobs:
         with:
           python-version: '3.9'
           architecture: 'x64'
+
+      - name: Create Scripts Directory
+        shell: bash
+        run: |
+          mkdir .github/scripts
+
+      - name: Download verify_check.py
+        shell: bash
+        run: |
+          curl -o ".github/scripts/verify_check.py" "https://raw.githubusercontent.com/Rexicon226/VerifierAction/main/scripts/verify_check.py"
+
+      - name: Install Requests
+        shell: bash
+        run: |
+          python3 -m pip install requests
+
+      - name: Run Verification
+        shell: bash
+        run: |
+          python3 .github/scripts/verify_check.py

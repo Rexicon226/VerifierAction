@@ -11,6 +11,7 @@ import requests
 import os
 
 # Declare Variables
+
 PATH = '/home/runner/work/'
 
 swinfo_amount = 0

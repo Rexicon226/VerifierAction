@@ -20,13 +20,17 @@ jobs:
           architecture: 'x64'
 
       - name: Create Scripts Directory
+        shell: bash
         run: mkdir .github/scripts
 
       - name: Download verify_check.py
+        shell: bash
         run: curl -o ".github/scripts/verify_check.py" "https://raw.githubusercontent.com/Rexicon226/VerifierAction/main/scripts/verify_check.py"
 
       - name: Install Requests
+        shell: bash
         run: python3 -m pip install requests
 
       - name: Run Verification
+        shell: bash
         run: python3 .github/scripts/verify_check.py

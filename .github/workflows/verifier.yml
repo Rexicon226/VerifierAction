@@ -1,5 +1,5 @@
 run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
-
+name: KSP2 Space Warp Verifier
 on:
   push:
   workflow_dispatch:

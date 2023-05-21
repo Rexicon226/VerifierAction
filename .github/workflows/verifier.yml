@@ -1,0 +1,17 @@
+run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+
+on:
+  push:
+  workflow_dispatch:
+    
+jobs:
+  verify_check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+        architecture: 'x64'
+    - run: python3 -m pip install requests && python3 .github/scripts/verify_check.py

@@ -1,25 +1,25 @@
-# Important stuff for Marketplace
-name: KSP2 Space Warp Verifier
-icon: check-square
-color: purple
-run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
-
-description: The "KSP2 Space Warp Verifier" GitHub Action is designed to streamline the verification process for your KSP 2 mods.
-
-on:
-  push:
-  workflow_dispatch:
-    
-jobs:
-  verify_check:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+name: 'KSP2 Space Warp Verifier'
+description: 'Streamline the verification process for your KSP 2 mods.'
+author: 'Your Name'
+inputs:
+  deploy_target:
+    description: 'The deploy target.'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Checkout Repository'
+      uses: actions/checkout@v2
+    - name: 'Setup Python'
+      uses: actions/setup-python@v2
       with:
         python-version: '3.9'
         architecture: 'x64'
-    - run: mkdir .github/scripts
-    - run: curl -o ".github/scripts/verify_check.py" "https://raw.githubusercontent.com/Rexicon226/VerifierAction/main/scripts/verify_check.py" 
-    - run: python3 -m pip install requests && python3 .github/scripts/verify_check.py
+    - name: 'Create Scripts Directory'
+      run: mkdir .github/scripts
+    - name: 'Download verify_check.py'
+      run: curl -o ".github/scripts/verify_check.py" "https://raw.githubusercontent.com/Rexicon226/VerifierAction/main/scripts/verify_check.py"
+    - name: 'Install Requests'
+      run: python3 -m pip install requests
+    - name: 'Run Verification'
+      run: python3 .github/scripts/verify_check.py

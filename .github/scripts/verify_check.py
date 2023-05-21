@@ -28,7 +28,10 @@ for root, subFolder, files in os.walk(PATH):
             if swinfo_amount > 1:
                 raise ResolutionError("You have more than 1 'swinfo.json' file in your project, please resolve this")
             swinfo_path = os.path.join(root, item)
-
+            
+if swinfo_amount == 0:
+    raise ResolutionError("No 'swinfo.json' was detected in your project directory. Please make sure there is one.")
+            
 swinfo_file = open(swinfo_path)   
 
 contents = json.load(swinfo_file)

@@ -1,6 +1,9 @@
-name: Verify KSP2 Mod
-description: 'Streamline the verification process for your KSP 2 mods.'
+name: SpaceWarp Version Checker
+description: 'Provides error checking for the version_check variable in Space Warp mods.'
 author: 'Sinon'
+
+icon: check-square
+color: purple
 
 runs: 
   using: composite

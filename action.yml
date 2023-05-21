@@ -3,6 +3,7 @@ description: 'Streamline the verification process for your KSP 2 mods.'
 author: 'Sinon'
 
 runs: 
+  using: composite
   steps:
       - name: Checkout Repository
         uses: actions/checkout@v2

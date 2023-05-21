@@ -44,5 +44,5 @@ return_code = requests.get(check_url).status_code
 
 if (return_code != 200):
     raise ReturnCodeError("The 'version_check' you have put into your 'swinfo.json' is incorrect / invalid. Please make sure there are no typos and it is a valid link to a swinfo.json or .csproj")
-    
-print("Verify Check was successful as far as we could tell. If any other issues arise, please contact the KSP2 Modding Society Discord."
+      
+print("Verify Check was successful as far as we could tell. If any other issues arise, please contact the KSP2 Modding Society Discord.")

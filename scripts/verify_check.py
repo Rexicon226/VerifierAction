@@ -53,7 +53,7 @@ if swinfo_count == 1:
             print("Verify Check was successful as far as we could tell. If any other issues arise, please contact the KSP2 Modding Society Discord.")
 
         else:
-            print("The url you gave is valid, however it does not point towards a valid 'swinfo.json' file.".)
+            print("The url you gave is valid, however it does not point towards a valid 'swinfo.json' file.")
 else:
      for csproj_path in csproj_paths:
         print(csproj_paths)

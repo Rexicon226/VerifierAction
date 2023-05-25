@@ -49,7 +49,7 @@ if swinfo_count == 1:
         if response.status_code != 200:
             raise ReturnCodeError("The 'version_check' URL in 'swinfo.json' is incorrect or invalid. Please make sure there are no typos and it is a valid link to a swinfo.json or .csproj.")
             
-        print(response)
+        print(response.json())
             
         print("Verify Check was successful as far as we could tell. If any other issues arise, please contact the KSP2 Modding Society Discord.")
 else:

@@ -71,4 +71,4 @@ else:
                 
                 response = requests.get(check_url)
                 if response.status_code != 200:
-                    raise ReturnCodeError(f"The URL '{check_url}' from '{build_targets_path}' is incorrect or invalid. Please make sure there are no typos and it is a valid
+                    raise ReturnCodeError(f"The URL '{check_url}' from '{build_targets_path}' is incorrect or invalid. Please make sure there are no typos and it is a valid")

@@ -24,7 +24,7 @@ for root, _, files in os.walk(PATH):
     if SWINFO_FILENAME in files:
         swinfo_paths.append(os.path.join(root, SWINFO_FILENAME))
     for file_name in files:
-        if "m" in file_name:
+        if CSPROJ_EXTENSION in file_name:
             print(file_name)
         
 swinfo_count = len(swinfo_paths)

@@ -55,8 +55,20 @@ if swinfo_count == 1:
         else:
             print("The url you gave is valid, however it does not point towards a valid 'swinfo.json' file.")
 else:
-     for csproj_path in csproj_paths:
-        print(csproj_paths)
+    for csproj_path in csproj_paths:
         with open(csproj_path) as csproj_file:
             csproj_contents = csproj_file.read()
-            print("got to the end of the csproj")
+            
+            if VERSION_CHECK_TAG in csproj_contents:
+                match = re.search(VERSION_CHECK_TAG, csproj_contents)
+                check_url = match.group(1).strip()
+                
+                if check_url:
+                    response = requests.get(check_url)
+                    if response.status_code != 200:
+                        raise ReturnCodeError(f"The URL '{check_url}' from '{csproj_path}' is incorrect or invalid. Please make sure there are no typos and it is a valid link to a swinfo.json or .csproj.")
+                    
+                    print("Verify Check was successful as far as we could tell. If any other issues arise, please contact the KSP2 Modding Society Discord.")
+                else:
+                    raise ResolutionError(f"No URL found for '{VERSION_CHECK_TAG}' in '{csproj_path}'.")
+

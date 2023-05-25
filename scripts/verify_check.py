@@ -18,7 +18,6 @@ class ReturnCodeError(Exception):
 # Find swinfo.json and .csproj files recursively
 swinfo_paths = []
 csproj_paths = []
-build_targets_paths = []
 
 for root, _, files in os.walk(PATH):
     if SWINFO_FILENAME in files:
@@ -26,6 +25,7 @@ for root, _, files in os.walk(PATH):
     for file_name in files:
         if CSPROJ_EXTENSION in file_name:
             print(file_name)
+            csproj_paths.append(os.path.join(root, file_name))
         
 swinfo_count = len(swinfo_paths)
 csproj_count = len(csproj_paths)

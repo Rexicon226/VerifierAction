@@ -52,6 +52,7 @@ if swinfo_count == 1:
         print("Verify Check was successful as far as we could tell. If any other issues arise, please contact the KSP2 Modding Society Discord.")
 else:
      for csproj_path in zip(csproj_paths):
+        print(csproj_path)
         with open(csproj_path) as csproj_file:
             csproj_contents = csproj_file.read()
             print("got to the end of the csproj")

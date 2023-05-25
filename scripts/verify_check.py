@@ -5,9 +5,9 @@ import os
 # Declare Constants
 PATH = '/home/runner/work/'
 SWINFO_FILENAME = "swinfo.json"
-CSPROJ_FILENAME = ".csproj"
+CSPROJ_EXTENSION = ".csproj"
 DIRECTORY_BUILD_TARGETS_FILENAME = "Directory.Build.targets"
-VERSION_CHECK_TAG = "<VersionCheckUrl>"
+VERSION_CHECK_TAG = "<VersionCheckUrl>(.*?)</VersionCheckUrl>"
 
 # Custom Error Classes
 class ResolutionError(Exception):
@@ -24,8 +24,9 @@ build_targets_paths = []
 for root, _, files in os.walk(PATH):
     if SWINFO_FILENAME in files:
         swinfo_paths.append(os.path.join(root, SWINFO_FILENAME))
-    if CSPROJ_FILENAME in files:
-        csproj_paths.append(os.path.join(root, CSPROJ_FILENAME))
+    for file_name in files:
+        if file_name.endswith(CSPROJ_EXTENSION):
+            csproj_paths.append(os.path.join(root, file_name))
     if DIRECTORY_BUILD_TARGETS_FILENAME in files:
         build_targets_paths.append(os.path.join(root, DIRECTORY_BUILD_TARGETS_FILENAME))
         
@@ -51,6 +52,8 @@ if swinfo_count == 1:
         response = requests.get(check_url)
         if response.status_code != 200:
             raise ReturnCodeError("The 'version_check' URL in 'swinfo.json' is incorrect or invalid. Please make sure there are no typos and it is a valid link to a swinfo.json or .csproj.")
+            
+        print("Verify Check was successful as far as we could tell. If any other issues arise, please contact the KSP2 Modding Society Discord.")
 else:
      for csproj_path, build_targets_path in zip(csproj_paths, build_targets_paths):
         with open(csproj_path) as csproj_file:

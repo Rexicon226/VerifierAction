@@ -62,6 +62,7 @@ else:
             
             if VERSION_CHECK_TAG in csproj_contents:
                 match = re.search(VERSION_CHECK_TAG, csproj_contents)
+                print(match)
                 check_url = match.group(1).strip()
                 
                 if check_url:

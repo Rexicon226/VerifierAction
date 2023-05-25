@@ -7,7 +7,7 @@ import re
 PATH = '/home/runner/work/'
 SWINFO_FILENAME = "swinfo.json"
 CSPROJ_EXTENSION = ".csproj"
-VERSION_CHECK_TAG = "<VersionCheckUrl"
+VERSION_CHECK_TAG = r"<VersionCheckUrl>(.*?)</VersionCheckUrl>"
 
 # Custom Error Classes
 class ResolutionError(Exception):

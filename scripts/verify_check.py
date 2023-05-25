@@ -50,14 +50,11 @@ if swinfo_count == 1:
             raise ReturnCodeError("The 'version_check' URL in 'swinfo.json' is incorrect or invalid. Please make sure there are no typos and it is a valid link to a swinfo.json or .csproj.")
             
         print(response.json()['version_check'])
-        if (response.json()['version_check'])
-        {
+        if 'version_check' in response.json():
             print("Verify Check was successful as far as we could tell. If any other issues arise, please contact the KSP2 Modding Society Discord.")
-        }
-        else
-        {
+
+        else:
             print("The url you gave is valid, however it does not point towards a valid "swinfo.json" file.".)
-        }
 else:
      for csproj_path in csproj_paths:
         print(csproj_paths)

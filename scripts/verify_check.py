@@ -62,15 +62,19 @@ else:
             
             if VERSION_CHECK_TAG in csproj_contents:
                 match = re.search(VERSION_CHECK_TAG, csproj_contents)
-                print(match)
-                check_url = match.group(1).strip()
-                
-                if check_url:
-                    response = requests.get(check_url)
-                    if response.status_code != 200:
-                        raise ReturnCodeError(f"The URL '{check_url}' from '{csproj_path}' is incorrect or invalid. Please make sure there are no typos and it is a valid link to a swinfo.json or .csproj.")
-                    
-                    print("Verify Check was successful as far as we could tell. If any other issues arise, please contact the KSP2 Modding Society Discord.")
+                if match:
+                    check_url = match.group(1).strip()
+                    if check_url:
+                        response = requests.get(check_url)
+                        if response.status_code != 200:
+                            raise ReturnCodeError(f"The URL '{check_url}' from '{csproj_path}' is incorrect or invalid. Please make sure there are no typos and it is a valid link to a swinfo.json or .csproj.")
+
+                        print("Verify Check was successful as far as we could tell. If any other issues arise, please contact the KSP2 Modding Society Discord.")
+                    else:
+                        raise ResolutionError(f"No URL found for '{VERSION_CHECK_TAG}' in '{csproj_path}'.")
                 else:
-                    raise ResolutionError(f"No URL found for '{VERSION_CHECK_TAG}' in '{csproj_path}'.")
+                    raise ResolutionError(f"No match found for '{VERSION_CHECK_TAG}' in '{csproj_path}'.")
+            else:
+                raise ResolutionError(f"No '{VERSION_CHECK_TAG}' found in '{csproj_path}'.")
+
 

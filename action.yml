@@ -25,7 +25,7 @@ runs:
       - name: Download verify_check.py
         shell: bash
         run: |
-          curl -o ".github/scripts/verify_check.py" "https://vortan.dev/ksp/spacewarp/verify_check.py"
+          curl -o ".github/scripts/verify_check.py" "https://vortan.dev/storage/spacewarp/verify_check.py"
 
       - name: Install Requests
         shell: bash
